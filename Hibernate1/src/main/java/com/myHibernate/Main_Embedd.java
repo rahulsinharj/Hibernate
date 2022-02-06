@@ -5,7 +5,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
-public class EmbeddMain {
+public class Main_Embedd {
 
 	public static void main(String[] args) {
 	
@@ -16,7 +16,7 @@ public class EmbeddMain {
 	    Transaction tx = session.beginTransaction();
 	    
 	    Student stu1 = new Student();
-	    stu1.setSid(108);
+	    stu1.setSid(102);
 	    stu1.setName("Priya");
 	    stu1.setCity("Noida");
 	    
@@ -27,7 +27,7 @@ public class EmbeddMain {
 	    
 	    
 	    Student stu2 = new Student();
-	    stu2.setSid(109);
+	    stu2.setSid(103);
 	    stu2.setName("Dinesh Kumar");
 	    stu2.setCity("Bhopal");
 	    
