@@ -1,4 +1,4 @@
-package com.hibernate;
+package com.myHibernate;
 
 import java.util.Arrays;
 import java.util.Date;

@@ -1,4 +1,4 @@
-package com.hibernate;
+package com.myHibernate;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

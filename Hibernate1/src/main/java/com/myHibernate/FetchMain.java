@@ -1,4 +1,4 @@
-package com.hibernate;
+package com.myHibernate;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -15,11 +15,11 @@ public class FetchMain {
         Session session = factory.openSession();	
         // No require of transaction open/close since we are not saving any transaction into db.
         
-        Student stu = (Student)session.get(Student.class, 102);
+        Student stu = (Student)session.get(Student.class, 101);
         System.out.println(stu);
         
-        Address ad = session.load(Address.class, 3);
-        System.out.println(ad);
+        Address ad = session.load(Address.class, 1);
+        System.out.println("addressId : "+ ad.getAddressId());
         System.out.println(ad.getStreet() +" : "+ad.getCity() );
         
         session.close();
