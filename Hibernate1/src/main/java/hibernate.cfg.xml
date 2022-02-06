@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+		
+<hibernate-configuration>
+	<session-factory>
+		<property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+		<property name="connection.password">rahulrj</property>
+		<property name="connection.url">jdbc:mysql://localhost:3306/myhiber</property>
+		<property name="connection.username">root</property>
+		<property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>			<!-- // Agar koi problem occured ho to MySQL5Dialect  kar lena  -->	
+		<property name="hbm2ddl.auto">update</property>			<!-- // isse hoga ye ki database me mentioned table agar already created nhi hoga to khudbhi create kar dega hibernate by this tag  -->
+		<property name="show_sql">true</property>
+		<mapping class="com.hibernate.Student" />		<!-- // Hibernate ko apne entities ke baare me batana padta hai, jiska obj save karna hai DB me  -->
+		<mapping class="com.hibernate.Address" />
+		<mapping class="com.map.Question" />
+		<mapping class="com.map.Answer" />
+		<mapping class="com.map.Person" />
+		<mapping class="com.map.Bike" />
+		
+		
+	</session-factory>
+</hibernate-configuration>
