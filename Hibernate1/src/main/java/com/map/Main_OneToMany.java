@@ -58,7 +58,7 @@ public class Main_OneToMany {
 		tx.commit();
 		
 		// Fetching Ques and Ans from DB :
-		Person per = ses.get(Person.class, 104);
+		Person per = ses.get(Person.class, 101);
 		System.out.println(per.getName());
 			
 		for(Bike bk : per.getBikes()) {
@@ -68,6 +68,7 @@ public class Main_OneToMany {
 		ses.close();
 		factory.close();
 
+		System.out.println("Fetch DONE..!!");
 	}
 
 }
