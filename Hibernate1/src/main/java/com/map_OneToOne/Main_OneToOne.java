@@ -1,9 +1,12 @@
-package com.map;
+package com.map_OneToOne;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+
+import com.map_OneToMany.Answer;
+import com.map_OneToMany.Question;
 
 public class Main_OneToOne {
 
@@ -13,50 +16,48 @@ public class Main_OneToOne {
 		cfg.configure("hibernate.cfg.xml");
 		SessionFactory factory = cfg.buildSessionFactory();
 
-		
-		// Creating Question :
-		Question q1 = new Question();
-		q1.setQuestionId(201);
-		q1.setQuestion("What is Java ?");
+		// Creating Person 1 ::
+		Person per1 = new Person();
+		per1.setPersonId(201);
+		per1.setName("Rahul");
 
-		// Creating Answer :
-		Answer a1 = new Answer();
-		a1.setAnswerId(901);
-		a1.setAnswer("Java is programming Language");
-		a1.setQuestion(q1);
-		q1.setAnswer(a1);
+		// Creating Laptop 1 ::
+		Laptop lap1 = new Laptop();
+		lap1.setLaptopId(8001);
+		lap1.setLaptop("Lenovo01");
+		lap1.setPerson(per1);
 
-		
-		// Creating Question 2 :
-		Question q2 = new Question();
-		q2.setQuestionId(202);
-		q2.setQuestion("What is HTML ?");
+		per1.setLaptop(lap1);
 
-		// Creating Answer 2 :
-		Answer a2 = new Answer();
-		a2.setAnswerId(902);
-		a2.setAnswer("HTML is a web markup language");
-		a2.setQuestion(q2);
-		q2.setAnswer(a2);
+		// Creating Person 2 ::
+		Person per2 = new Person();
+		per2.setPersonId(202);
+		per2.setName("Vikash");
+
+		// Creating Laptop 2 ::
+		Laptop lap2 = new Laptop();
+		lap2.setLaptopId(8002);
+		lap2.setLaptop("Dell01");
+		lap2.setPerson(per2);
 
 		
-	
+		per2.setLaptop(lap2);
+
 		// Creating Session :
 		Session session = factory.openSession(); // factory.getCurrentSession();
 		Transaction tx = session.beginTransaction();
 
-		session.save(q1);
-		session.save(a1);
-		session.save(q2);
-		session.save(a2);
+		session.save(per1);
+		session.save(lap1);
+		session.save(per2);
+		session.save(lap2);
 		tx.commit();
-		
+
 		// Fetching Ques and Ans from DB :
-		Question newQ = (Question)session.get(Question.class, 201);
-		System.out.println(newQ.getQuestion());
-		System.out.println(newQ.getAnswer().getAnswer());
-		
-		
+		Person person = (Person) session.get(Person.class, 201);
+		System.out.println(person.getName());
+		System.out.println(person.getLaptop().getLaptop());
+
 		session.close();
 		factory.close();
 

@@ -1,4 +1,4 @@
-package com.mapMany;
+package com.map_ManyToMany;
 
 import java.util.List;
 

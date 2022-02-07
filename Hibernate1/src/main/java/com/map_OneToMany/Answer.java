@@ -1,10 +1,11 @@
-package com.map;
+package com.map_OneToMany;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
-
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+	
 @Entity
 public class Answer {
 
@@ -12,11 +13,10 @@ public class Answer {
 	@Column(name = "ans_id")
 	private int answerId;
 	private String answer;
-										// Kyuki Question table me already answer ke foreign key hai {Kewal etna hi hota to UniDirectional Mapping reh jata}
-										// But now since we have also included Foreign key of Question in this Answer table, to ab isse bhi Question table ka content pata lagaya ja sakta hai, So now it is BiDirectional Mapping.
-	@OneToOne(mappedBy = "answer")		// @OneToOne ke karan "Answer table" me ek Foreign Key column ban jayega -> joki "Question table" ka Primary key hoga. 
-	private Question question;			// mappedBy = "answer" ke karan ab Answer table me Question ka foreign key nhi banega ;  kewal bas Question table me hi Answer key banega.
 	
+	@ManyToOne
+	@JoinColumn(name = "question_foreignKey_id")	// Answer table ke Join column ko agar ye tag lagake rename nhi karege, to automatically "question_ques_id" naam se table ban jayega.
+	private Question question;						// We can also add here @JoinColumn(name = "question_foreignKey_id")  for changing this join column name
 	
 	public Answer() {
 		super();

@@ -1,4 +1,4 @@
-package com.map;
+package com.map_OneToMany;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,52 +17,50 @@ public class Main_OneToMany {
 		SessionFactory factory = cfg.buildSessionFactory();
 
 		
-		// Creating Person :
-		Person p1 = new Person();
-		p1.setPersonId(104);
-		p1.setName("Deepa");
-
-		// Creating Bikes :
-		Bike b1 = new Bike();
-		b1.setBikeId(810);
-		b1.setBike("Moto");
-		b1.setPerson(p1);
-	
-		Bike b2 = new Bike();
-		b2.setBikeId(811);
-		b2.setBike("Honda");
-		b2.setPerson(p1);
+		// Creating Question :
+		Question ques1 = new Question();
+		ques1.setQuestionId(101); 
+		ques1.setQuestion("What are feachers of Java ?");
 		
-		Bike b3 = new Bike();
-		b3.setBikeId(812);
-		b3.setBike("Bajaj Sumo");
-		b3.setPerson(p1);
+		// Creating Answer's :
+		Answer a1 = new Answer();
+		a1.setAnswerId(9001);
+		a1.setAnswer("Java is a programming language.");
+		a1.setQuestion(ques1);
 		
-		List<Bike> bikeList = new ArrayList<Bike>();
-		bikeList.add(b1);
-		bikeList.add(b2);
-		bikeList.add(b3);
+		Answer a2 = new Answer();
+		a2.setAnswerId(9002);
+		a2.setAnswer("Java is used to develop mobile apps, web apps and desktop apps.");
+		a2.setQuestion(ques1);
 		
-		p1.setBikes(bikeList);
+		Answer a3 = new Answer();
+		a3.setAnswerId(9003);
+		a3.setAnswer("Java has an important feature of write once, run anywhere.");
+		a3.setQuestion(ques1);
 		
-				
+		List<Answer> answers1 = new ArrayList<Answer>();
+		answers1.add(a1);
+		answers1.add(a2);
+		answers1.add(a3);
+		ques1.setAnswers(answers1);
+		
 		// Creating Session :
 		Session ses = factory.openSession(); // factory.getCurrentSession();
 		Transaction tx = ses.beginTransaction();
 
-		ses.save(p1);
-		ses.save(b1);
-		ses.save(b2);
-		ses.save(b3);
+		ses.save(ques1);
+		ses.save(a1);
+		ses.save(a2);
+		ses.save(a3);
 		
 		tx.commit();
 		
 		// Fetching Ques and Ans from DB :
-		Person per = ses.get(Person.class, 101);
-		System.out.println(per.getName());
+		Question qu = ses.get(Question.class, 101);
+		System.out.println(qu.getQuestion());
 			
-		for(Bike bk : per.getBikes()) {
-			System.out.println(bk.getBike());
+		for(Answer ans : qu.getAnswers()) {
+			System.out.println(ans.getAnswer());
 		}
 		
 		ses.close();

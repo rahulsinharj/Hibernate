@@ -1,11 +1,12 @@
-package com.map;
+package com.map_OneToMany;
 
+
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Question {
@@ -16,19 +17,18 @@ public class Question {
 	
 	private String question;
 	
-	@OneToOne						// @OneToOne ke karan "Question table" me ek Foreign Key column ban jayega -> joki "Answer table" ka Primary key hoga. 
-	@JoinColumn(name = "a_id")		// isse Foreign key ka name change kar skate hai DB me
-	private Answer answer;
-	
+	@OneToMany(mappedBy = "question")	// Jo bhi Foreign key column creation ka kaam tha wo "Question" class ke "answers" wale instance se chhinke kewal "Answer" class ke "question" instance	 ke de diya gaya hai.
+	private List<Answer> answers;		// Matlab ab, jo bhi join colum banega -> wo banega "Answer" class ke Table ke "question" field me
+										// One Qustion can have many Answers.
 	
 	public Question() {
 		super();
 	}
-	public Question(int questionId, String question, Answer answer) {
+	public Question(int questionId, String question, List<Answer> answers) {
 		super();
 		this.questionId = questionId;
 		this.question = question;
-		this.answer = answer;
+		this.answers = answers;
 	}
 	public int getQuestionId() {
 		return questionId;
@@ -42,16 +42,19 @@ public class Question {
 	public void setQuestion(String question) {
 		this.question = question;
 	}
-	public Answer getAnswer() {
-		return answer;
+	public List<Answer> getAnswers() {
+		return answers;
 	}
-	public void setAnswer(Answer answer) {
-		this.answer = answer;
+	public void setAnswers(List<Answer> answers) {
+		this.answers = answers;
 	}
+
 	@Override
 	public String toString() {
-		return "Question [questionId=" + questionId + ", question=" + question + ", answer=" + answer + "]";
+		return "Question [questionId=" + questionId + ", question=" + question + ", answers=" + answers + "]";
 	}
+	
+	
 	
 	
 }

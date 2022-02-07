@@ -1,11 +1,10 @@
-package com.map;
-
-import java.util.List;
+package com.map_OneToOne;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Person {
@@ -16,19 +15,20 @@ public class Person {
 	
 	@Column(name = "person_name")
 	private String name;
-										// Jo bhi Foreign key column creation ka kaam tha wo "Person" class ke bikes wale instance se chhinke kewal "Bike" class ke person ke de diya gaya hai.
-	@OneToMany(mappedBy = "person")		// Matlab ab, jo bhi join colum banega -> wo banega "Bike" class ke Table ke "person" field me 	
-	private List<Bike> bikes;			// One Person can have many bikes.
+	
+	@OneToOne							// @OneToOne ke karan "Person table" me "lap_id" ka ek Foreign Key column ban jayega -> joki "Laptop table" ka Primary key hoga.
+	@JoinColumn(name = "lap_id")		// isse Foreign key ka name change kar skate hai DB me
+	private Laptop laptop;
 	
 	
 	public Person() {
 		super();
 	}
-	public Person(int personId, String name, List<Bike> bikes) {
+	public Person(int personId, String name, Laptop laptop) {
 		super();
 		this.personId = personId;
 		this.name = name;
-		this.bikes = bikes;
+		this.laptop = laptop;
 	}
 	public int getPersonId() {
 		return personId;
@@ -42,16 +42,17 @@ public class Person {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public List<Bike> getBikes() {
-		return bikes;
+	public Laptop getLaptop() {
+		return laptop;
 	}
-	public void setBikes(List<Bike> bikes) {
-		this.bikes = bikes;
+	public void setLaptop(Laptop laptop) {
+		this.laptop = laptop;
 	}
 	@Override
 	public String toString() {
-		return "Person [personId=" + personId + ", name=" + name + ", bikes=" + bikes + "]";
-	}
+		return "Person [personId=" + personId + ", name=" + name + ", laptop=" + laptop + "]";
+	} 
+	
 	
 	
 }

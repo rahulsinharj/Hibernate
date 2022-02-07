@@ -10,16 +10,16 @@
 		<property name="connection.url">jdbc:mysql://localhost:3306/myhiber</property>
 		<property name="connection.username">root</property>
 		<property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>			<!-- // Agar koi problem occured ho to MySQL5Dialect  kar lena  -->	
-		<property name="hbm2ddl.auto">update</property>		<!-- // isse hoga ye ki database me mentioned table agar already created nhi hoga to khudbhi create kar dega hibernate by this tag  -->
+		<property name="hbm2ddl.auto">create</property>		<!-- // isse hoga ye ki database me mentioned table agar already created nhi hoga to khudbhi create kar dega hibernate by this tag  -->
 		<property name="show_sql">true</property>
-   		<mapping class="com.myHibernate.Student" />			<!-- // Hibernate ko apne entities ke baare me batana padta hai, jiska obj save karna hai DB me  -->
-		<mapping class="com.myHibernate.Address" />
-		<mapping class="com.map.Question" />
-		<mapping class="com.map.Answer" />
-		<mapping class="com.map.Person" />
-		<mapping class="com.map.Bike" /> 			
-		<mapping class="com.mapMany.Emp" />
-		<mapping class="com.mapMany.Project" />
+   <!-- <mapping class="com.myHibernate.Student" />			// Hibernate ko apne entities ke baare me batana padta hai, jiska obj save karna hai DB me 
+		<mapping class="com.myHibernate.Address" /> -->
+<!-- 	<mapping class="com.map_OneToOne.Person" />
+		<mapping class="com.map_OneToOne.Laptop" /> -->
+		<mapping class="com.map_OneToMany.Question" />
+		<mapping class="com.map_OneToMany.Answer" />
+   <!-- <mapping class="com.map_ManyToMany.Emp" />
+		<mapping class="com.map_ManyToMany.Project" /> -->
 		
 	</session-factory>
 </hibernate-configuration>
