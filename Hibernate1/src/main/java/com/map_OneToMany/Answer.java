@@ -3,7 +3,6 @@ package com.map_OneToMany;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 	
 @Entity
@@ -15,7 +14,7 @@ public class Answer {
 	private String answer;
 	
 	@ManyToOne
-	@JoinColumn(name = "question_foreignKey_id")	// Answer table ke Join column ko agar ye tag lagake rename nhi karege, to automatically "question_ques_id" naam se table ban jayega.
+//	@JoinColumn(name = "question_foreignKey_id")	// Answer table ke Join column ko agar ye tag lagake rename nhi karege, to automatically "question_ques_id" naam se table ban jayega.
 	private Question question;						// We can also add here @JoinColumn(name = "question_foreignKey_id")  for changing this join column name
 	
 	public Answer() {
