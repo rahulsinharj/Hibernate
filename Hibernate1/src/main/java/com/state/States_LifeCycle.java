@@ -8,11 +8,13 @@ import org.hibernate.cfg.Configuration;
 import com.myHibernate.Certificate;
 import com.myHibernate.Student;
 
-public class Main_state {
+// Hibernate Object State Persistent Life Cycle.
+
+public class States_LifeCycle {
 
 	public static void main(String[] args) {
 		
-	/* Types of states :
+	/* Types of states for Hibernate Obj :
 	    1. Transient
 	    2. Persistent
 	    3. Detached

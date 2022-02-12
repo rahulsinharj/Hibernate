@@ -18,14 +18,14 @@ public class HQL_Queries {
 		SessionFactory factory = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 		Session ses = factory.openSession(); // factory.getCurrentSession();
 
-/*		// HQL Syntax for SELECTING nonDynamic entries ::
- 		-------------------------------------------------									*/
+/*		// SELECTING nonDynamic entries through HQL Syntax ::
+ 		-----------------------------------------------------								*/
 //		String query = "from Student where city = 'Bhopal' ";
 //		Query q = ses.createQuery(query);
 
 
-/*		// HQL Syntax for SELECTING Dynamic entries ::
- 		----------------------------------------------										*/
+/*		// SELECTING Dynamic entries through HQL Syntax ::
+ 		--------------------------------------------------									*/
 		String query = "from Student where city = :x and name = :n";
 //			String query = "from Student as s where s.city = :x and s.name = :n";			// Using ALIAS
 		Query q1 = ses.createQuery(query);
@@ -41,8 +41,8 @@ public class HQL_Queries {
 		}
 
 		
-/*		// HQL Syntax for DELETING entries ::
-		-------------------------------------												*/	
+/*		// DELETING entries through HQL Syntax ::
+		-----------------------------------------											*/	
 		Transaction tx = ses.beginTransaction();
 		Query q2 = ses.createQuery("delete from Student where city = :c");
 		q2.setParameter("c", "Mumbai");
@@ -51,8 +51,8 @@ public class HQL_Queries {
 		tx.commit();
 
 
-/*		// HQL Syntax for UPDATING entries ::
-		-------------------------------------												*/
+/*		// UPDATING entries through HQL Syntax ::
+		-----------------------------------------											*/
 		Transaction tx3 = ses.beginTransaction();
 		Query q3 = ses.createQuery("update Student set name = :n where sid= :id");
 		q3.setParameter("n", "Shruti");
@@ -62,8 +62,8 @@ public class HQL_Queries {
 		tx.commit();
 
 		
-/*		// HQL Syntax for SELECTING/EXECUTING Join entries ::
-		-----------------------------------------------------								*/	
+/*		// SELECTING/EXECUTING Join entries through HQL Syntax ::
+		---------------------------------------------------------							*/	
 		Query q4 = ses.createQuery("select q.questionId, q.question, a.answer from Question as q INNER JOIN q.answers as a");
 		List<Object[]> list4 = q4.getResultList();
 		for (Object[] e : list4) {
