@@ -19,24 +19,17 @@ public class Main_OneToMany {
 		
 		// Creating Question :
 		Question ques1 = new Question();
-		ques1.setQuestionId(103); 
-		ques1.setQuestion("What are features of ComputerScience?");
+		ques1.setQuestionId(106); 
+		ques1.setQuestion("What are features of OpeatingSystem ?");
 		
 		// Creating Answer's :
 		Answer a1 = new Answer();
-		a1.setAnswerId(9007);
-		a1.setAnswer("ComputerScience is used for Data Search");
+		a1.setAnswerId(9013);
+		a1.setAnswer("OpeatingSystem first answer");
 		a1.setQuestion(ques1);
 		
-		Answer a2 = new Answer();
-		a2.setAnswerId(9008);
-		a2.setAnswer("ComputerScience is used for Processor speed");
-		a2.setQuestion(ques1);
-		
-		Answer a3 = new Answer();
-		a3.setAnswerId(9009);
-		a3.setAnswer("ComputerScience is used for handling Multiple requests");
-		a3.setQuestion(ques1);
+		Answer a2 = new Answer(9014,"OpeatingSystem second answer", ques1);
+		Answer a3 = new Answer(9015,"OpeatingSystem third answer", ques1);
 		
 		List<Answer> answers1 = new ArrayList<Answer>();
 		answers1.add(a1);
