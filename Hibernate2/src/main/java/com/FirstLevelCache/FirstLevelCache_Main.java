@@ -40,7 +40,7 @@ public class FirstLevelCache_Main
 		
 		System.out.println("Working something.......");
 		
-		Book book2 = ses.get(Book.class, 3);					// Hibernate won't run here in background for same id which has already been recently fetched, because Hibernate has already stored Book{id=3} obj into its cache memory/session obj. 
+		Book book2 = ses.get(Book.class, 3);					// Hibernate won't run here in background for same id which has already been recently fetched, because Hibernate has already stored Book{id=3} obj into its cache memory -> through its Session Level obj.  
 		System.out.println(book2);
 		
 		System.out.println(ses.contains(book2));				// Checking stored book2 obj in sessionObj

@@ -39,11 +39,13 @@ public class SecondLevelCache_Main {
  		-----------------------------------------											*/		
 		Session session2 = factory.openSession(); 
 		
-		School sch2 = session2.get(School.class, 2);
-		System.out.println(sch2);
-	
+		School sch2 = session2.get(School.class, 2);		// Since now we have enabled Second_level_caching which is associated with SessionFactory obj level , 
+		System.out.println(sch2);							// therefore Hibernate won't run here in background for same id which has already been recently fetched, because Hibernate has already stored School{id=2} obj into its cache memory -> through its FactorySession Level obj. 
+		
 		session2.close();
 		
+// So we can conclude that these SchoolObj which have been stored in DB with the help of "factory" obj. Therefore these Book obj will remain associated till "factory" obj lifetime only. 
+// Also we have only one SessionFactory obj in an Hibernate Application. 		
 		
 		
 		factory.close();
