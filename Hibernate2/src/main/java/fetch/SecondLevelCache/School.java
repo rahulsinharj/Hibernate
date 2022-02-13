@@ -1,4 +1,4 @@
-package com.SecondLevelCache;
+package fetch.SecondLevelCache;
 
 import javax.persistence.Cacheable;
 import javax.persistence.Column;

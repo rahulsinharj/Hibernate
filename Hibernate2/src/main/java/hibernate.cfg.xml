@@ -13,8 +13,10 @@
 		<property name="show_sql">true</property>
    		<property name="cache.use_second_level_cache">true</property>		<!-- // with this we are telling hibernate that we are using second_level_cache  --> 
    		<property name="cache.region.factory_class">org.hibernate.cache.ehcache.internal.EhcacheRegionFactory</property>		<!-- // second_level_cache ka class bhi batana padega -->
-   		<mapping class="com.FirstLevelCache.Book" /> 
-		<mapping class="com.SecondLevelCache.School" /> 
+   		<property name="cache.use_query_cache">true</property>
+   		
+   		<mapping class="fetch.FirstLevelCache.Book" /> 
+		<mapping class="fetch.SecondLevelCache.School" /> 
 		
 	</session-factory>
 </hibernate-configuration>

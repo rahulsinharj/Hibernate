@@ -1,4 +1,4 @@
-package com.FirstLevelCache;
+package fetch.FirstLevelCache;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

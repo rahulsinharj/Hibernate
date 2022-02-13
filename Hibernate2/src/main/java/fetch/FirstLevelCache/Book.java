@@ -1,4 +1,4 @@
-package com.FirstLevelCache;
+package fetch.FirstLevelCache;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
