@@ -3,11 +3,11 @@ package com.hql;
 import java.util.Arrays;
 import java.util.List;
 
-import org.hibernate.query.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
 
 import com.myHibernate.Student;
 
@@ -65,7 +65,7 @@ public class HQL_FetchQueries {
 /*		// SELECTING/EXECUTING Join entries through HQL Syntax ::
 		---------------------------------------------------------							*/	
 		Query q4 = ses.createQuery("select q.questionId, q.question, a.answer from Question as q INNER JOIN q.answers as a");
-		List<Object[]> Qlist = q4.getResultList();
+		List<Object[]> Qlist = q4.getResultList();		// or,  q4.list();
 		for (Object[] e : Qlist) {
 			System.out.println(Arrays.toString(e));
 		}
