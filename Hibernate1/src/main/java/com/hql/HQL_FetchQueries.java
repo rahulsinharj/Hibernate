@@ -36,12 +36,16 @@ public class HQL_FetchQueries {
 		q1.setParameter("x", "Bhopal");
 		q1.setParameter("n", "Shiv");
 
-		// fetching single object : // q.uniqueResult();
-
+		// fetching single object : 
+		Student st1 = (Student)q1.uniqueResult();
+		System.out.println(st1);
+		System.out.println(st1.getSid() + " -- " + st1.getName() + " -- " + st1.getCity() +" -- "+st1.getCerti().getCourse());
+		
 		// fetching multiple objects <List> :
 		List<Student> stuList = q1.list();
 		for (Student s : stuList) {
 			System.out.println(s.getSid() + " -- " + s.getName() + " -- " + s.getCity());
+			System.out.println(s.getCerti().getCourse());
 		}
 
 		
