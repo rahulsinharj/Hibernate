@@ -28,8 +28,9 @@ public class Save_Fetch_HQL {
 		
 /*		// SELECTING Dynamic entries through HQL Syntax ::
  		--------------------------------------------------									*/
-		String query = "from Food where food_rate = 50";	// "Food" is the EntityName ; Also ByDefault EntityName is the Class name ; untill we specifically change it by doing  @Entity(name = "Food_Details") in Food class, in that case put "Food_Details"   
-															// And, after where condition for putting the where parameter -> either we can write varible name "rate" or, Entity's changed Column name {@Column(name = "food_rate")}	 in Food class
+		String query = "from Food where rate = 50";	// "Food" is the EntityName ; Also ByDefault EntityName is the Class name ; untill we specifically change it by doing  @Entity(name = "Food_Details") in Food class, in that case put "Food_Details"   
+															// But when we only change  @Table(name = "School_Details") ,  and no change in @Entity name, then in that case again our class name will be Entity Name, that we have to put here ClassName in HQL query 
+															// And, after where condition for putting the where parameter -> either here we can write varible name "rate" or, Entity's Column changed name {@Column(name = "food_rate")} of Food class.
 		Query q1 = ses.createQuery(query);
 
 		List<Food> foodList = q1.list();
