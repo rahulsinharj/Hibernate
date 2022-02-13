@@ -11,6 +11,10 @@ import org.hibernate.query.Query;
 
 import com.myHibernate.Student;
 
+// yaato session.createQuery("HqlQuery"); ke baad query1.setParameter("","") karke query1.list(); se data READ FETCH operation karo.
+
+// yaato session.createQuery("HqlQuery"); ke baad query2.setParameter("","") karke query2.executeUpdate(); se data me UPDATE/DELETE operation karo.
+
 public class HQL_FetchQueries {
 
 	public static void main(String[] args) {
