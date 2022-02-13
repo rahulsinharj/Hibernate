@@ -23,6 +23,7 @@
 		<mapping class="com.map_ManyToMany.Project" /> 
 		<mapping class="com.Cascade.MyChild" /> 
 		<mapping class="com.Cascade.MyToy" /> 
+		<mapping class="com.hql.Food" /> 
 		
 	</session-factory>
 </hibernate-configuration>

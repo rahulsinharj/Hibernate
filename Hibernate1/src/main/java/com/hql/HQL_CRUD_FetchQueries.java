@@ -3,6 +3,8 @@ package com.hql;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.persistence.Column;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -15,7 +17,7 @@ import com.myHibernate.Student;
 
 // yaato session.createQuery("HqlQuery"); ke baad query2.setParameter("","") karke query2.executeUpdate(); se data me UPDATE/DELETE operation karo.
 
-public class HQL_FetchQueries {
+public class HQL_CRUD_FetchQueries {
 
 	public static void main(String[] args) {
 
@@ -30,7 +32,8 @@ public class HQL_FetchQueries {
 
 /*		// SELECTING Dynamic entries through HQL Syntax ::
  		--------------------------------------------------									*/
-		String query = "from Student where city = :x and name = :n";
+		String query = "from Student where city = :x and name = :n";						// "Student" is the EntityName ; Also ByDefault EntityName is the Class name, untill we specifically change it by doing  @Entity(name = "School_Details") in Student class. 
+																							// And, after where condition for putting the where parameter -> either we can write varible name "name" or, Entity's changed Column name {@Column(name = "student_name")}	 in Student class 
 //			String query = "from Student as s where s.city = :x and s.name = :n";			// Using ALIAS
 		Query q1 = ses.createQuery(query);
 		q1.setParameter("x", "Bhopal");

@@ -1,5 +1,7 @@
 package fetch.SecondLevelCache;
 
+import javax.persistence.Entity;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -31,13 +33,13 @@ public class SecondLevelCache_Main {
 //		tx.commit();
 		
 		// Caching using normal GET
-		School sch1 = session1.get(School.class, 2);
-		System.out.println("GET call :" +sch1);
+//		School sch1 = session1.get(School.class, 2);
+//		System.out.println("GET call :" +sch1);
 		
 		// Caching using HQL :
-		Query q1 = session1.createQuery("from School_Details where school_id = 3");		// "School_Details" should be table name, not entity obj name 
-		q1.setCacheable(true);															// For 2nd level caching, since we have done "cache.use_query_cache" as true in hibernate.cfg.xml  => so here also We have to specify it in QueryObj here.
-		School sh1 = (School)q1.uniqueResult();											// Here returned item is the Entity obj	
+		Query q1 = session1.createQuery("from School_Details where scid = 3");		// "School_Details" is the EntityName ; Also ByDefault EntityName is the Class name, untill we specifically change it by doing  @Entity(name = "School_Details") in School class. 
+		q1.setCacheable(true);														// For 2nd level caching, since we have done "cache.use_query_cache" as true in hibernate.cfg.xml  => so here also We have to specify it in QueryObj here.
+		School sh1 = (School)q1.uniqueResult();										// Here returned item is the Entity obj	
 		System.out.println("CREATE QUERY call :" +sh1);
 		session1.close();
 	
@@ -47,14 +49,14 @@ public class SecondLevelCache_Main {
 		Session session2 = factory.openSession(); 
 		
 		// Caching using normal GET
-		School sch2 = session2.get(School.class, 2);				// Since now we have enabled Second_level_caching which is associated with SessionFactory obj level , 
-		System.out.println("GET call :" +sch2);						// therefore Hibernate won't run here in background for same id which has already been recently fetched, because Hibernate has already stored School{id=2} obj into its cache memory -> through its FactorySession Level obj. 
-		
-		// Caching using HQL  :
-		Query q2 = session2.createQuery("from School_Details where school_id = 3");
-		q2.setCacheable(true);
-		School sh2 = (School)q2.uniqueResult();
-		System.out.println("CREATE QUERY call :" +sh2);
+//		School sch2 = session2.get(School.class, 2);				// Since now we have enabled Second_level_caching which is associated with SessionFactory obj level , 
+//		System.out.println("GET call :" +sch2);						// therefore Hibernate won't run here in background for same id which has already been recently fetched, because Hibernate has already stored School{id=2} obj into its cache memory -> through its FactorySession Level obj. 
+//		
+//		// Caching using HQL  :
+//		Query q2 = session2.createQuery("from School_Details where school_id = 3");
+//		q2.setCacheable(true);
+//		School sh2 = (School)q2.uniqueResult();
+//		System.out.println("CREATE QUERY call :" +sh2);
 		
 		session2.close();
 		
