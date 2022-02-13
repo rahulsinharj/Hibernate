@@ -11,7 +11,7 @@ import org.hibernate.cfg.Configuration;
 
 import com.myHibernate.Student;
 
-public class HQL_Queries {
+public class HQL_FetchQueries {
 
 	public static void main(String[] args) {
 
@@ -45,7 +45,7 @@ public class HQL_Queries {
 		-----------------------------------------											*/	
 		Transaction tx = ses.beginTransaction();
 		Query q2 = ses.createQuery("delete from Student where city = :c");
-		q2.setParameter("c", "Mumbai");
+		q2.setParameter("c", "Nagpur");
 		int updResult = q2.executeUpdate();
 		System.out.println("Deleted entries " + updResult);
 		tx.commit();
@@ -56,17 +56,17 @@ public class HQL_Queries {
 		Transaction tx3 = ses.beginTransaction();
 		Query q3 = ses.createQuery("update Student set name = :n where sid= :id");
 		q3.setParameter("n", "Shruti");
-		q3.setParameter("id", 103);
+		q3.setParameter("id", 104);
 		int delResult = q3.executeUpdate();
 		System.out.println("Updated entries " + delResult);
-		tx.commit();
+		tx3.commit();
 
 		
 /*		// SELECTING/EXECUTING Join entries through HQL Syntax ::
 		---------------------------------------------------------							*/	
 		Query q4 = ses.createQuery("select q.questionId, q.question, a.answer from Question as q INNER JOIN q.answers as a");
-		List<Object[]> list4 = q4.getResultList();
-		for (Object[] e : list4) {
+		List<Object[]> Qlist = q4.getResultList();
+		for (Object[] e : Qlist) {
 			System.out.println(Arrays.toString(e));
 		}
 
