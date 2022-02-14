@@ -6,9 +6,9 @@
 <hibernate-configuration>
 	<session-factory>
 		<property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-		<property name="connection.password">rahulrj</property>
 		<property name="connection.url">jdbc:mysql://localhost:3306/myhiber</property>
 		<property name="connection.username">root</property>
+		<property name="connection.password">rahulrj</property>
 		<property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>			<!-- // Agar koi problem occured ho to MySQL5Dialect  kar lena  -->	
 		<property name="hbm2ddl.auto">update</property>		<!-- // isse hoga ye ki database me mentioned table agar already created nhi hoga to khudbhi create kar dega hibernate by this tag  -->
 		<property name="show_sql">true</property>
