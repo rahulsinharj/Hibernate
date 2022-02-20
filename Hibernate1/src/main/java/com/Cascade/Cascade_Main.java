@@ -10,7 +10,9 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
 
+import com.hql.Food;
 import com.map_OneToMany.Answer;
 import com.map_OneToMany.Question;
 
@@ -22,17 +24,17 @@ public class Cascade_Main {							// Using One To Many
 		Session ses = factory.openSession(); 				// factory.getCurrentSession();
 		
 
-/*		// CASCADING through Hibernate ::
- 		-----------------------------------------											*/
+/*		// CASCADING through Hibernate - INSERTING Entries into DB ::
+ ------------------------------------------------------------------------------------------------------------------------*/
 		// Creating Question :
 		MyChild ch1 = new MyChild();
-		ch1.setChildId(201);
-		ch1.setName("Rano");
+		ch1.setChildId(205);
+		ch1.setCname("Rimi");
 
-		MyToy t1 = new MyToy(6010,"Bat", ch1);
-		MyToy t2 = new MyToy(6011,"Ball", ch1);
-		MyToy t3 = new MyToy(6012,"Hat", ch1);
-		MyToy t4 = new MyToy(6013,"Gun", ch1);
+		MyToy t1 = new MyToy(6018,"Bat", ch1);
+		MyToy t2 = new MyToy(6019,"Ball", ch1);
+		MyToy t3 = new MyToy(6020,"Baloon", ch1);
+		MyToy t4 = new MyToy(6021,"Gun", ch1);
 		
 		List<MyToy> toyList = new ArrayList<>();
 		toyList.add(t1);
@@ -47,15 +49,57 @@ public class Cascade_Main {							// Using One To Many
 		tx.commit();
 		
 /*
-  	If we will use cascading then hame ses.save(a1); ses.save(a2); ses.save(a3); answers ko alag se save call karke kei xarurat nhi padegi.
+  	If we will use cascading then hame ses.save(a1); ses.save(a2); ses.save(a3); answers ko alag se save call karke ki zarurat nhi padegi.
   	So that ab -> koi bhi activity ab perform karege Main entity par to usse jitni bhi related entities hogi unpe khudse hi particular SAVE/DELETE operation perform ho jayegi    
 	
 	Putting inside @OneToMany(cascade = CascadeType.ALL) in MyChild class
 */
 		
+		
+/*		// Fetching SINGLE Entries from DB ::
+ ------------------------------------------------------------------------------------------------------------------------*/
+	
+		MyChild ch = ses.get(MyChild.class, 202);						// Fetching record for childId = 202
+		System.out.println(ch.getChildId()+" -- "+ch.getCname());
+			
+		for(MyToy ty : ch.getToys()) {
+			System.out.println(ty.getToyId()+" -- "+ty.getToy()); 
+		} 
+		
+		System.out.println("===================================================");
+		
+		
+/*		// Fetching MULTIPLE Entries from DB - using HQL ::
+ ------------------------------------------------------------------------------------------------------------------------*/	
+		
+		Query q1 = ses.createQuery("from MyChild");										// Without where clause , Query LIST will return all the columns -> for every RowEntries.
+
+//		Query q1 = ses.createQuery("from MyChild where cname = 'Rohit' ");				// "MyChild" is the EntityName ; Also ByDefault EntityName is the Class name ; untill we specifically change it by doing  @Entity(name = "  ") in MyChild class.
+		
+//		Query q1 = ses.createQuery("from MyChild where cname = :nam ");					// Fetching entries by Dynamically inserting cname parameter 
+//		q1.setParameter("nam", "Rohit");													
+																						
+//		Query q1 = ses.createQuery("from MyChild where cname like 'R%' ");				// Fetching entries which have cname starting with "R"
+		
+//		Query q1 = ses.createQuery("from MyChild where cname like :word ");				// Fetching entries by Dynamically inserting LIKE parameter for cname
+//		q1.setParameter("word", "R"+"%");			
+		
+		List<MyChild> childList = q1.list();											// Since because we have written "from Food" in our query, and we have not put any specific column names to fetch, therefore it will return us a whole FOOD class OBJECT -> having all filled values of its instance variables.
+		for (MyChild mych : childList) 
+		{
+			System.out.println(mych.getChildId() + " -- " + mych.getCname());
+			
+			for(MyToy toy : mych.getToys()) {
+				System.out.println(toy.getToyId()+" -- "+toy.getToy()); 
+			} 
+			System.out.println("------------------------------------------");
+		}
+		
+		
+		
+		
 		ses.close();
 		factory.close();
 		
 	}
-
 }

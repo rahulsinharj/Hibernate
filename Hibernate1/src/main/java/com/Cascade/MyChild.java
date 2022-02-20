@@ -21,26 +21,17 @@ public class MyChild {
 	@OneToMany(mappedBy = "mychild" , cascade = CascadeType.ALL)
 	private List<MyToy> toys;
 
-	
-	public MyChild() {
-		super();
-	}
-	public MyChild(int childId, String cname, List<MyToy> toys) {
-		super();
-		this.childId = childId;
-		this.cname = cname;
-		this.toys = toys;
-	}
 	public int getChildId() {
 		return childId;
 	}
+
 	public void setChildId(int childId) {
 		this.childId = childId;
 	}
-	public String getName() {
+	public String getCname() {
 		return cname;
 	}
-	public void setName(String cname) {
+	public void setCname(String cname) {
 		this.cname = cname;
 	}
 	public List<MyToy> getToys() {
@@ -49,10 +40,12 @@ public class MyChild {
 	public void setToys(List<MyToy> toys) {
 		this.toys = toys;
 	}
+
 	@Override
 	public String toString() {
 		return "MyChild [childId=" + childId + ", cname=" + cname + ", toys=" + toys + "]";
 	}
 
+	
 	
 }
