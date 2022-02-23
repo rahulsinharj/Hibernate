@@ -72,8 +72,8 @@ public class Cascade_Main {							// Using One To Many
 /*		// Fetching MULTIPLE Entries from DB - using HQL ::
  ------------------------------------------------------------------------------------------------------------------------*/	
 		
-		Query q1 = ses.createQuery("from MyChild");										// Without where clause , Query LIST will return all the columns -> for every RowEntries.
-
+		Query q1 = ses.createQuery("from MyChild");		// "select ch from MyChild ch" , will also work same way and is more readable.								
+																						// Without where clause , Query LIST will return all the columns -> for every RowEntries.
 //		Query q1 = ses.createQuery("from MyChild where cname = 'Rohit' ");				// "MyChild" is the EntityName ; Also ByDefault EntityName is the Class name ; untill we specifically change it by doing  @Entity(name = "  ") in MyChild class.
 		
 //		Query q1 = ses.createQuery("from MyChild where cname = :nam ");					// Fetching entries by Dynamically inserting cname parameter 
