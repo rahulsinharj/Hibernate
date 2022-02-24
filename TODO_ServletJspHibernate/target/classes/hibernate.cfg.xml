@@ -14,7 +14,6 @@
 		<property name="show_sql">true</property>
    		<property name="format_sql">true</property>	
    		<mapping class="todo.entities.Note" />
-	
 		
 	</session-factory>
 </hibernate-configuration>
