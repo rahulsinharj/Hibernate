@@ -19,9 +19,9 @@ public class Question {
 	private String question;
 											// ByDefault "FetchType.LAZY" ke karan -> jab "Question" ka data nikalege to "Question" table ka associated mapped data "Answer" uss time self fetch nhi hoga. Jab associated mapped data "Answer" ka alag se getter() call karege tab jake "Answer" ka data fetch hoga.
 	@OneToMany(mappedBy = "question", fetch = FetchType.EAGER)			// "FetchType.EAGER" ke karan ab mapped wale column ke bhi table "answer" ab saath saath hi query fire ho jayega, without even fetching "answer" table's content
-	private List<Answer> answers;			// Jo bhi Foreign key column creation ka kaam tha wo "Question" class ke "answers" wale instance se chhinke kewal "Answer" class ke "question" instance	 ke de diya gaya hai.
-											// Matlab ab, jo bhi join colum banega -> wo banega "Answer" class ke Table ke "question" field me
-											// One Qustion can have many Answers.
+	private List<Answer> answers;			// mappedBy = "question" -> ke karan Jo bhi Foreign key column creation ka kaam tha wo "Question" class ke "answers" wale instance se chhinke kewal "Answer" class ke "question" instance ke de diya gaya hai.
+													// Matlab ab, jo bhi join colum banega -> wo banega "Answer" class ke Table ke "question" field me
+													// One Qustion can have many Answers.
 	
 	public Question() {
 		super();

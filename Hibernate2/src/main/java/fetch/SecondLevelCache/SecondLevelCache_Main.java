@@ -5,8 +5,9 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
 
-//Second level caching is NOT byDafault enabled & it is available at SessionFactory obj level and hence associated with FACTORY object. 
-
+/* Second level caching is NOT byDafault enabled & it is available at SessionFactory obj level and hence associated with FACTORY object. 
+	For achieving second level cache, we need two external jars {1. net.sf.ehcache}  {2. hibernate-ehcache}
+*/
 public class SecondLevelCache_Main {	
 
 	public static void main(String[] args) {
