@@ -57,8 +57,8 @@ public class HQL_CRUD_FetchQueries {
 		Transaction tx = ses.beginTransaction();
 		Query q2 = ses.createQuery("delete from Student where city = :c");
 		q2.setParameter("c", "Nagpur");
-		int updResult = q2.executeUpdate();
-		System.out.println("Deleted entries " + updResult);
+		int delResult = q2.executeUpdate();
+		System.out.println("Deleted entries " + delResult);
 		tx.commit();
 
 
@@ -68,8 +68,8 @@ public class HQL_CRUD_FetchQueries {
 		Query q3 = ses.createQuery("update Student set name = :n where sid= :id");
 		q3.setParameter("n", "Shruti");
 		q3.setParameter("id", 104);
-		int delResult = q3.executeUpdate();
-		System.out.println("Updated entries " + delResult);
+		int updResult = q3.executeUpdate();
+		System.out.println("Updated entries " + updResult);
 		tx3.commit();
 
 		

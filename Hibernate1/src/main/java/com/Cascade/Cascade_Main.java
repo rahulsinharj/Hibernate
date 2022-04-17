@@ -45,7 +45,7 @@ public class Cascade_Main {							// Using One To Many
 		ch1.setToys(toyList);
 		
 		Transaction tx = ses.beginTransaction();
-		ses.save(ch1);
+//		ses.save(ch1);
 		tx.commit();
 		
 /*
@@ -76,14 +76,18 @@ public class Cascade_Main {							// Using One To Many
 																						// Without where clause , Query LIST will return all the columns -> for every RowEntries.
 //		Query q1 = ses.createQuery("from MyChild where cname = 'Rohit' ");				// "MyChild" is the EntityName ; Also ByDefault EntityName is the Class name ; untill we specifically change it by doing  @Entity(name = "  ") in MyChild class.
 		
-//		Query q1 = ses.createQuery("from MyChild where cname = :nam ");					// Fetching entries by Dynamically inserting cname parameter 
-//		q1.setParameter("nam", "Rohit");													
-																						
+		
+/*		Query q1 = ses.createQuery("from MyChild where cname = :nam ");					// Fetching entries by Dynamically inserting cname parameter 
+		q1.setParameter("nam", "Rohit");													
+*/
+		
 //		Query q1 = ses.createQuery("from MyChild where cname like 'R%' ");				// Fetching entries which have cname starting with "R"
+	
 		
-//		Query q1 = ses.createQuery("from MyChild where cname like :word ");				// Fetching entries by Dynamically inserting LIKE parameter for cname
-//		q1.setParameter("word", "R"+"%");			
-		
+/*		String searchWord = "R";														// Dynamically searching alike word
+		Query q1 = ses.createQuery("from MyChild where cname like :word ");				// Fetching entries by Dynamically inserting LIKE parameter for cname , here unline JPA => cname like :word%  , don't work
+		q1.setParameter("word", searchWord+"%");										// ****% means starts with  
+*/		
 		List<MyChild> childList = q1.list();											// Since because we have written "from Food" in our query, and we have not put any specific column names to fetch, therefore it will return us a whole FOOD class OBJECT -> having all filled values of its instance variables.
 		for (MyChild mych : childList) 
 		{

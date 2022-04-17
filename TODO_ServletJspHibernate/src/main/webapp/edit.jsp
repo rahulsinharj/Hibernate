@@ -36,10 +36,9 @@
 
 			<div class="form-group">
 				<label for="content">Note Content</label>
-				<textarea name="content" required id="content"
-					placeholder="Enter your content here" class="form-control"
-					style="height: 300px;"><%=note.getContent()%>
-					</textarea>
+				<textarea name="content" required id="content" placeholder="Enter your content here" class="form-control" style="height: 300px;">
+					<%=note.getContent()%>
+				</textarea>
 
 
 			</div>
