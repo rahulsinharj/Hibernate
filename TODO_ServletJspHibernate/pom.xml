@@ -33,14 +33,14 @@
 			<artifactId>jakarta.servlet.jsp.jstl</artifactId>
 			<version>2.0.0</version>
 		</dependency>
-	
 
-	<dependency>
-		<groupId>junit</groupId>
-		<artifactId>junit</artifactId>
-		<version>3.8.1</version>
-		<scope>test</scope>
-	</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -50,7 +50,19 @@
 				<artifactId>maven-war-plugin</artifactId>
 				<version>3.3.1</version>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.1</version>
+				<configuration>
+					<verbose>true</verbose>
+					<source>16</source>
+					<target>16</target>
+					<showWarnings>true</showWarnings>
+				</configuration>
+			</plugin>
 		</plugins>
 		<finalName>TODO_ServletJspHibernate</finalName>
 	</build>
+
 </project>
