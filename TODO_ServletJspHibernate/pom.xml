@@ -43,29 +43,15 @@
 		</dependency>
 	</dependencies>
 
-		<build>
+	<build>
 		<plugins>
-		
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
 				<version>3.3.1</version>
 			</plugin>
-		
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.8.1</version>
-				<configuration>
-					<verbose>true</verbose>
-					<source>16</source>
-					<target>16</target>
-					<showWarnings>true</showWarnings>
-				</configuration>
-			</plugin>
-		
 		</plugins>
-		<finalName>TODO</finalName>
+		<finalName>MavenServletJsp</finalName>
 	</build>
 
 </project>
