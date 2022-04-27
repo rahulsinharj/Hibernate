@@ -43,13 +43,15 @@
 		</dependency>
 	</dependencies>
 
-	<build>
+		<build>
 		<plugins>
+		
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
 				<version>3.3.1</version>
 			</plugin>
+		
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -61,8 +63,9 @@
 					<showWarnings>true</showWarnings>
 				</configuration>
 			</plugin>
+		
 		</plugins>
-		<finalName>TODO_ServletJspHibernate</finalName>
+		<finalName>TODO</finalName>
 	</build>
 
 </project>
