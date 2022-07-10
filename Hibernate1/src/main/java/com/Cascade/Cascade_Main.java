@@ -28,13 +28,13 @@ public class Cascade_Main {							// Using One To Many
  ------------------------------------------------------------------------------------------------------------------------*/
 		// Creating Question :
 		MyChild ch1 = new MyChild();
-		ch1.setChildId(205);
+		ch1.setChildId(103);
 		ch1.setCname("Rimi");
 
-		MyToy t1 = new MyToy(6018,"Bat", ch1);
-		MyToy t2 = new MyToy(6019,"Ball", ch1);
-		MyToy t3 = new MyToy(6020,"Baloon", ch1);
-		MyToy t4 = new MyToy(6021,"Gun", ch1);
+		MyToy t1 = new MyToy(209,"Bat", ch1);
+		MyToy t2 = new MyToy(210,"Ball", ch1);
+		MyToy t3 = new MyToy(211,"Baloon", ch1);
+		MyToy t4 = new MyToy(212,"Gun", ch1);
 		
 		List<MyToy> toyList = new ArrayList<>();
 		toyList.add(t1);
@@ -45,7 +45,7 @@ public class Cascade_Main {							// Using One To Many
 		ch1.setToys(toyList);
 		
 		Transaction tx = ses.beginTransaction();
-//		ses.save(ch1);
+		ses.save(ch1);
 		tx.commit();
 		
 /*
@@ -59,7 +59,7 @@ public class Cascade_Main {							// Using One To Many
 /*		// Fetching SINGLE Entries from DB ::
  ------------------------------------------------------------------------------------------------------------------------*/
 	
-		MyChild ch = ses.get(MyChild.class, 202);						// Fetching record for childId = 202
+		MyChild ch = ses.get(MyChild.class, 102);						// Fetching record for childId = 102
 		System.out.println(ch.getChildId()+" -- "+ch.getCname());
 			
 		for(MyToy ty : ch.getToys()) {
