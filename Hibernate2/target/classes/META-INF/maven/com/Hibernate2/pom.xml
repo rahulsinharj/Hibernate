@@ -63,8 +63,8 @@
 				<version>3.8.1</version>
 				<configuration>
 					<verbose>true</verbose>
-					<source>16</source>
-					<target>16</target>
+					<source>17</source>
+					<target>17</target>
 					<showWarnings>true</showWarnings>
 				</configuration>
 			</plugin>
